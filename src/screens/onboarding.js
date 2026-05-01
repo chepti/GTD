@@ -36,10 +36,10 @@ export function renderOnboarding(root, { uid, onDone }) {
     if (step === 2) {
       const items = draftProjects
         .map(
-          (name, i) => `
+          (p, i) => `
         <div class="project-confirm card" data-i="${i}">
-          <p>זיהיתי: <strong>${escapeHtml(name)}</strong> ✓</p>
-          <input type="text" class="project-name-input" value="${escapeHtml(name)}" data-i="${i}" />
+          <p>זיהיתי: <strong>${escapeHtml(p.name)}</strong> ✓</p>
+          <input type="text" class="project-name-input" value="${escapeHtml(p.name)}" data-i="${i}" />
           <div class="row-btns">
             <button type="button" class="btn-ghost ob-del" data-i="${i}">מחק</button>
           </div>
@@ -220,5 +220,8 @@ export function renderOnboarding(root, { uid, onDone }) {
 }
 
 function escapeHtml(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/"/g, '&quot;');
 }
