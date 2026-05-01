@@ -188,6 +188,12 @@ function openSkipSheet(root, ctx, taskId) {
         <button type="button" class="btn-ghost" id="skip-close" style="margin-top:16px;width:100%">סגור</button>
       </div>
     </div>`;
+  const backdrop = sheet.querySelector('.skip-sheet-backdrop');
+  backdrop?.addEventListener('click', () => {
+    sheet.hidden = true;
+    sheet.innerHTML = '';
+  });
+  sheet.querySelector('.skip-sheet-inner')?.addEventListener('click', (e) => e.stopPropagation());
   sheet.querySelector('#skip-close')?.addEventListener('click', () => {
     sheet.hidden = true;
     sheet.innerHTML = '';

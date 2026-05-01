@@ -85,12 +85,6 @@ export function subscribeProjects(uid, cb) {
   });
 }
 
-export function subscribeAllProjects(uid, cb) {
-  return onSnapshot(projectsCol(uid), (snap) => {
-    cb(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
-  });
-}
-
 export function subscribeTasks(uid, cb) {
   return onSnapshot(tasksCol(uid), (snap) => {
     cb(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
