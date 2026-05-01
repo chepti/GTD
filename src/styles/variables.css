@@ -20,4 +20,7 @@
   --header-height: 52px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top: env(safe-area-inset-top, 0px);
+  /** רוחב מרכזי במסכים רחבים + שוליים */
+  --app-canvas-max: 480px;
+  --app-page-gutter: clamp(12px, 4vw, 56px);
 }

@@ -22,6 +22,33 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-inline: var(--app-page-gutter);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/** מעטפת האפליקציה — רוחב מוגבל + transform כדי ש position:fixed (כותרת/ניווט) ייחסב לרוחב המסגרת */
+#root-shell {
+  width: 100%;
+  max-width: min(var(--app-canvas-max), 100%);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transform: translateZ(0);
+  background: var(--color-bg);
+}
+
+@media (min-width: 560px) {
+  #root-shell {
+    max-width: min(var(--app-canvas-max), calc(100vw - 2 * var(--app-page-gutter)));
+    margin-block: 12px;
+    min-height: calc(100dvh - 24px);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft), 0 0 0 1px rgba(116, 69, 119, 0.07);
+  }
 }
 
 a {
@@ -56,7 +83,7 @@ textarea {
 .app-main {
   flex: 1;
   padding: calc(var(--safe-top) + var(--header-height) + 12px) 16px calc(var(--nav-height) + var(--safe-bottom) + 24px);
-  max-width: 480px;
+  max-width: 100%;
   margin-inline: auto;
   width: 100%;
 }
@@ -178,6 +205,8 @@ textarea {
 
 .login-screen {
   min-height: 100dvh;
+  width: 100%;
+  max-width: min(var(--app-canvas-max), 100%);
   display: flex;
   flex-direction: column;
   align-items: center;

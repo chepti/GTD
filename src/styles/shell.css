@@ -16,8 +16,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  max-width: 480px;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
+  padding-inline: 12px;
 }
 
 .app-logo-icon {
@@ -44,8 +46,9 @@
   justify-content: space-around;
   align-items: center;
   z-index: 60;
-  max-width: 520px;
-  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  margin-inline: 0;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
