@@ -1,0 +1,23 @@
+:root {
+  --color-bg: #fdfaf4;
+  --color-bg-soft: #f5efe8;
+  --color-surface: #ffffff;
+  --color-primary: #744577;
+  --color-primary-soft: #e8dcef;
+  --color-accent: #6b9b7a;
+  --color-accent-soft: #d9eee0;
+  --color-danger: #c94c5c;
+  --color-text: #2d1f33;
+  --color-text-muted: #6b5d73;
+  --color-border: #e6dde8;
+  --radius-card: 24px;
+  --radius-pill: 999px;
+  --radius-input: 16px;
+  --shadow-soft: 0 8px 32px rgba(45, 31, 51, 0.08);
+  --shadow-card: 0 4px 20px rgba(116, 69, 119, 0.12);
+  --font-family: 'Rubik', system-ui, sans-serif;
+  --nav-height: 72px;
+  --header-height: 52px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}

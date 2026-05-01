@@ -1,0 +1,20 @@
+{
+  "name": "GTD",
+  "short_name": "GTD",
+  "description": "Getting Things Done - בשיטה שעובדת",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFAF4",
+  "theme_color": "#744577",
+  "orientation": "portrait-primary",
+  "lang": "he",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
