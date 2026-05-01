@@ -5,10 +5,13 @@ let phase = 'action';
 /** @type {any} */
 let currentTask = null;
 let undoTimer = null;
+/** מונע לופ: אחרי מעבר, לא לבחור שוב אותו task-id עד ש-Firestore מסיר אותו מה-inbox */
+let lastAdvancedFromId = null;
 
 export function resetClarifyState() {
   phase = 'action';
   currentTask = null;
+  lastAdvancedFromId = null;
 }
 
 export function renderClarify(root, ctx) {
@@ -19,8 +22,15 @@ export function renderClarify(root, ctx) {
     return ta - tb;
   });
   const total = inbox.length;
-  if (!currentTask || !inbox.find((t) => t.id === currentTask.id)) {
-    currentTask = inbox[0] || null;
+
+  if (lastAdvancedFromId && !inbox.some((t) => t.id === lastAdvancedFromId)) {
+    lastAdvancedFromId = null;
+  }
+  if (currentTask && !inbox.some((t) => t.id === currentTask.id)) {
+    currentTask = inbox.find((t) => t.id !== lastAdvancedFromId) ?? inbox[0] ?? null;
+    phase = 'action';
+  } else if (!currentTask) {
+    currentTask = inbox.find((t) => t.id !== lastAdvancedFromId) ?? inbox[0] ?? null;
     phase = 'action';
   }
 
@@ -102,8 +112,21 @@ export function renderClarify(root, ctx) {
   createIcons();
 
   const nextTask = () => {
-    const rest = inbox.filter((t) => t.id !== currentTask.id);
-    currentTask = rest[0] || null;
+    const tid = currentTask?.id;
+    if (tid) lastAdvancedFromId = tid;
+    const freshInbox = ctx.tasks
+      .filter((t) => t.status === 'inbox')
+      .sort((a, b) => {
+        const ta = a.createdAt?.toMillis?.() ?? 0;
+        const tb = b.createdAt?.toMillis?.() ?? 0;
+        return ta - tb;
+      });
+    const rest = freshInbox.filter((t) => t.id !== tid);
+    if (rest.length > 0) {
+      currentTask = rest[0];
+    } else {
+      currentTask = freshInbox.find((t) => t.id !== tid) ?? null;
+    }
     phase = 'action';
     refreshNav();
     renderClarify(root, ctx);

@@ -1,5 +1,4 @@
 import { createIcons } from '../lib/lucideIcons.js';
-import { updateTask, Timestamp } from '../firebase/db.js';
 
 function fmtRelative(ts) {
   if (!ts) return '';
@@ -31,30 +30,30 @@ export function renderOrganize(root, ctx) {
     <h1 class="screen-title">ארגון</h1>
     <details class="org-section" ${organizeFocus === 'cal' ? 'open' : ''}>
       <summary>📅 יומן</summary>
-      <div class="org-list">${scheduled.map((t) => taskRow(t, pmap, uid)).join('') || '<p class="muted">ריק</p>'}</div>
+      <div class="org-list">${scheduled.map((t) => taskRow(t, pmap)).join('') || '<p class="muted">ריק</p>'}</div>
     </details>
     <details class="org-section" ${organizeFocus === 'wait' ? 'open' : ''}>
       <summary>⏳ ממתין ל</summary>
-      <div class="org-list">${waiting.map((t) => taskRow(t, pmap, uid)).join('') || '<p class="muted">ריק</p>'}</div>
+      <div class="org-list">${waiting.map((t) => taskRow(t, pmap)).join('') || '<p class="muted">ריק</p>'}</div>
     </details>
     <details class="org-section" ${organizeFocus === 'some' ? 'open' : ''}>
       <summary>🌙 אולי/מתישהו</summary>
-      <div class="org-list">${someday.map((t) => taskRow(t, pmap, uid)).join('') || '<p class="muted">ריק</p>'}</div>
+      <div class="org-list">${someday.map((t) => taskRow(t, pmap)).join('') || '<p class="muted">ריק</p>'}</div>
     </details>
     <details class="org-section" ${organizeFocus === 'ref' ? 'open' : ''}>
       <summary>📚 עיון ומידע</summary>
-      <div class="org-list">${ref.map((t) => taskRow(t, pmap, uid)).join('') || '<p class="muted">ריק</p>'}</div>
+      <div class="org-list">${ref.map((t) => taskRow(t, pmap)).join('') || '<p class="muted">ריק</p>'}</div>
     </details>
     <details class="org-section" ${!organizeFocus || organizeFocus === 'next' ? 'open' : ''}>
       <summary>⚡ פעולות הבאות</summary>
-      <div class="org-list">${next.map((t) => taskRow(t, pmap, uid)).join('') || '<p class="muted">ריק</p>'}</div>
+      <div class="org-list">${next.map((t) => taskRow(t, pmap)).join('') || '<p class="muted">ריק</p>'}</div>
     </details>
   `;
   bindRows(root, ctx);
   createIcons();
 }
 
-function taskRow(t, pmap, uid) {
+function taskRow(t, pmap) {
   const pn = t.projectId ? pmap[t.projectId]?.name || '' : '';
   const wait = t.status === 'waiting' ? `<span class="muted">${fmtRelative(t.createdAt)} · ${escape(t.waitingFor || '')}</span>` : '';
   return `<div class="org-task" data-id="${t.id}">
