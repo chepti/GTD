@@ -1,4 +1,4 @@
-import { createIcons } from 'lucide';
+import { createIcons } from '../lib/lucideIcons.js';
 import { updateTask, Timestamp, deleteTask } from '../firebase/db.js';
 
 let phase = 'action';

@@ -1,6 +1,6 @@
 import './style.css';
 import { registerSW } from 'virtual:pwa-register';
-import { createIcons } from 'lucide';
+import { createIcons } from './lib/lucideIcons.js';
 
 import { isFirebaseConfigured } from './firebase/config.js';
 import { onUserChanged, signInWithGoogle } from './firebase/auth.js';

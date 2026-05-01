@@ -1,4 +1,4 @@
-import { createIcons } from 'lucide';
+import { createIcons } from '../lib/lucideIcons.js';
 import { CONTEXTS, rankTasksWithDim } from '../lib/rankTasks.js';
 import { applyInferenceToTask } from '../lib/inference.js';
 import { burstConfetti } from '../lib/confetti.js';

@@ -1,4 +1,4 @@
-import { createIcons } from 'lucide';
+import { createIcons } from '../lib/lucideIcons.js';
 import { parseInbox } from '../lib/parseInbox.js';
 import { batchAddTasksInbox, Timestamp } from '../firebase/db.js';
 import { appState, setCaptureMode } from '../app/store.js';

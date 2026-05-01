@@ -1,4 +1,4 @@
-import { createIcons } from 'lucide';
+import { createIcons } from '../lib/lucideIcons.js';
 import { rankTasks } from '../lib/rankTasks.js';
 
 function startOfToday() {

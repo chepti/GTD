@@ -1,4 +1,4 @@
-import { createIcons } from 'lucide';
+import { createIcons } from '../lib/lucideIcons.js';
 
 export const TABS = [
   { id: 'capture', label: 'לכידה', icon: 'pencil', submenu: true },

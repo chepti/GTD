@@ -1,4 +1,4 @@
-import { createIcons } from 'lucide';
+import { createIcons } from '../lib/lucideIcons.js';
 import { burstConfetti } from '../lib/confetti.js';
 import { addWeeklyReview, updateProject, saveMeta, Timestamp } from '../firebase/db.js';
 
