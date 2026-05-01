@@ -10,12 +10,11 @@ import {
   subscribeTasks,
   subscribeProjects,
   subscribeWeeklyReviews,
-  drainQueue,
   processWriteQueueItem,
   saveMeta,
   serverTimestamp,
 } from './firebase/db.js';
-import { onOnline } from './lib/writeQueue.js';
+import { onOnline, drainQueue } from './lib/writeQueue.js';
 import { mountShell } from './app/shell.js';
 import {
   setUser,
